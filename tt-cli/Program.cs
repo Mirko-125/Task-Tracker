@@ -14,10 +14,11 @@ namespace TaskTracker
         public int Id { get; set; }
         public string Description { get; set; } = string.Empty;
         public TaskStatus Status { get; set; } = TaskStatus.NotDone;
-
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime LastModified { get; set; } = DateTime.UtcNow;
         public override string ToString()
         {
-            return $"ID: {Id}, Description: {Description}, Status: {Status}";
+            return $"ID: {Id}, Description: {Description}, Status: {Status}, Created: {CreatedAt} (UTC), Last modified: {LastModified} (UTC)";
         }
     }
 
@@ -130,6 +131,7 @@ namespace TaskTracker
                 return;
             }
             task.Status = (TaskStatus)enumValue;
+            task.LastModified = DateTime.UtcNow;
             Console.WriteLine("MarkedTask: " + task);
         }
 
@@ -141,7 +143,8 @@ namespace TaskTracker
             {
                 Id = newId,
                 Description = description,
-                Status = 0
+                Status = 0,
+                CreatedAt = DateTime.UtcNow
             };
 
             tasks.Add(newTask);
@@ -163,6 +166,7 @@ namespace TaskTracker
                 return;
             }
             task.Description = newDescription;
+            task.LastModified = DateTime.UtcNow;
             Console.WriteLine("Updated task: " + task);
         }
         static void DeleteTask(List<TaskItem> tasks, string idStr)

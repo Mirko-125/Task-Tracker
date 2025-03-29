@@ -2,11 +2,8 @@
   {
     "Id": 1,
     "Description": "Igraj Dishonored 2",
-    "Status": 1
-  },
-  {
-    "Id": 2,
-    "Description": "Listen to Spotify",
-    "Status": 2
+    "Status": 1,
+    "CreatedAt": "2025-03-29T15:14:48.7879608Z",
+    "LastModified": "2025-03-29T15:16:11.452011Z"
   }
 ]
