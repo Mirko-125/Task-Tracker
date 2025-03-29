@@ -1,0 +1,15 @@
+d:\Projects\Task-Tracker\tt-cli\bin\Debug\net9.0\tt-cli.exe
+D:\Projects\Task-Tracker\tt-cli\bin\Debug\net9.0\tt-cli.deps.json
+D:\Projects\Task-Tracker\tt-cli\bin\Debug\net9.0\tt-cli.runtimeconfig.json
+d:\Projects\Task-Tracker\tt-cli\bin\Debug\net9.0\tt-cli.dll
+d:\Projects\Task-Tracker\tt-cli\bin\Debug\net9.0\tt-cli.pdb
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.GeneratedMSBuildEditorConfig.editorconfig
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.AssemblyInfoInputs.cache
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.AssemblyInfo.cs
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.csproj.CoreCompileInputs.cache
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.sourcelink.json
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.dll
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\refint\tt-cli.dll
+d:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.pdb
+D:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\tt-cli.genruntimeconfig.cache
+D:\Projects\Task-Tracker\tt-cli\obj\Debug\net9.0\ref\tt-cli.dll
