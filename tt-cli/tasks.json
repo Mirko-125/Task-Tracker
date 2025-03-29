@@ -3,5 +3,10 @@
     "Id": 1,
     "Description": "Igraj Dishonored 2",
     "Status": 1
+  },
+  {
+    "Id": 2,
+    "Description": "Listen to Spotify",
+    "Status": 2
   }
 ]

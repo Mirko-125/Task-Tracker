@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace TaskTracker
 {
@@ -31,12 +28,8 @@ namespace TaskTracker
         static int Main(string[] args)
         {
             var tasks = LoadTasks();
-
-            ShowUsage();
-
-            if (args.Length == 0)
+            if (args.Length == 0 | args[0] == "help")
             {
-                Console.WriteLine("Not enough arguments, please try again, here is the app usage:");
                 ShowUsage();
                 return 1;
             }
@@ -109,7 +102,7 @@ namespace TaskTracker
             Console.WriteLine("  add \"Task description\"");
             Console.WriteLine("  update <taskId> \"New description\"");
             Console.WriteLine("  delete <taskId>");
-            Console.WriteLine("  list [--done|--inprogress]");
+            Console.WriteLine("  list [--notdone|--done|--inprogress]");
             Console.WriteLine("  mark <taskId> [1|2] -1 is for InProgress while -2 is for Done");
         }
         #endregion
@@ -192,24 +185,39 @@ namespace TaskTracker
         }
         static void ShowTasks(List<TaskItem> tasks, string[] args)
         {
-            bool filterDone = false;
+            bool filterNotDone = false;
             bool filterInProgress = false;
+            bool filterDone = false;
 
-            //"list --done" or "list --inprogress"
             if (args.Length > 1)
             {
-                if (args[1].Equals("--done", StringComparison.OrdinalIgnoreCase))
-                    filterDone = true;
-                else if (args[1].Equals("--inprogress", StringComparison.OrdinalIgnoreCase))
-                    filterInProgress = true;
+                switch (args[1])
+                {
+                    case var arg when arg.Equals("--notdone", StringComparison.OrdinalIgnoreCase):
+                        filterNotDone = true;
+                        break;
+                    case var arg when arg.Equals("--inprogress", StringComparison.OrdinalIgnoreCase):
+                        filterInProgress = true;
+                        break;
+                    case var arg when arg.Equals("--done", StringComparison.OrdinalIgnoreCase):
+                        filterDone = true;
+                        break;
+                    default:
+                        Console.WriteLine("Error: arg[1] is not valid");
+                        Console.WriteLine("  list [--notdone|--done|--inprogress]");
+                        break;
+                }
+
             }
 
             Console.WriteLine("Tasks:");
             foreach (var task in tasks)
             {
-                if (filterDone && task.Status != TaskStatus.Done)
+                if (filterNotDone && task.Status != TaskStatus.NotDone)
                     continue;
                 if (filterInProgress && task.Status != TaskStatus.InProgress)
+                    continue;
+                if (filterDone && task.Status != TaskStatus.Done)
                     continue;
 
                 Console.WriteLine(task);
