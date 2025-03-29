@@ -32,8 +32,11 @@ namespace TaskTracker
         {
             var tasks = LoadTasks();
 
+            ShowUsage();
+
             if (args.Length == 0)
             {
+                Console.WriteLine("Not enough arguments, please try again, here is the app usage:");
                 ShowUsage();
                 return 1;
             }
@@ -44,6 +47,15 @@ namespace TaskTracker
             {
                 switch (command)
                 {
+                    case "mark":
+                        if (args.Length < 3)
+                        {
+                            Console.WriteLine("Error: 'mark' requires a task ID and new status.");
+                            return 1;
+                        }
+                        MarkTask(tasks, args[1], args[2]);
+                        break;
+
                     case "add":
                         if (args.Length < 2)
                         {
@@ -90,7 +102,7 @@ namespace TaskTracker
             SaveTasks(tasks);
             return 0;
         }
-
+        #region How to use
         static void ShowUsage()
         {
             Console.WriteLine("Usage:");
@@ -98,9 +110,37 @@ namespace TaskTracker
             Console.WriteLine("  update <taskId> \"New description\"");
             Console.WriteLine("  delete <taskId>");
             Console.WriteLine("  list [--done|--inprogress]");
+            Console.WriteLine("  mark <taskId> [1|2] -1 is for InProgress while -2 is for Done");
         }
-        #region "CRUD"
+        #endregion
 
+        static void MarkTask(List<TaskItem> tasks, string idStr, string enumString)
+        {
+            int enumValue = Int32.Parse(enumString);
+
+            if (!(enumValue == 1 || enumValue == 2))
+            {
+                Console.WriteLine("Error: enumValue is out of bounds");
+                Console.WriteLine("  mark <taskId> [1|2] -1 is for InProgress while -2 is for Done");
+                return;
+            }
+            if (!int.TryParse(idStr, out int id))
+            {
+                Console.WriteLine("Invalid task ID.");
+                return;
+            }
+            var task = tasks.Find(t => t.Id == id);
+
+            if (task == null)
+            {
+                Console.WriteLine("Task with ID " + id + " not found.");
+                return;
+            }
+            task.Status = (TaskStatus)enumValue;
+            Console.WriteLine("MarkedTask: " + task);
+        }
+
+        #region "CRUD"
         static void AddTask(List<TaskItem> tasks, string description)
         {
             int newId = tasks.Count > 0 ? tasks[^1].Id + 1 : 1;
@@ -108,7 +148,7 @@ namespace TaskTracker
             {
                 Id = newId,
                 Description = description,
-                Status = TaskStatus.NotDone
+                Status = 0
             };
 
             tasks.Add(newTask);
