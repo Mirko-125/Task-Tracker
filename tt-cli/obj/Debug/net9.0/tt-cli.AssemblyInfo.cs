@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tt-cli")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fda197e454c067a34c424bb7f7e9180fdc8515bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74a5b4089326256efd2c00dd3036d3dc73269ee2")]
 [assembly: System.Reflection.AssemblyProductAttribute("tt-cli")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tt-cli")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
